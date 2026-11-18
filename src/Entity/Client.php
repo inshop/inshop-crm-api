@@ -63,6 +63,7 @@ use function random_bytes;
             'method' => 'PUT',
             'path' => '/frontend/profile/me',
             'normalization_context' => ['groups' => ["client_put_item"]],
+            'denormalization_context' => ['groups' => ["client_put_item"]],
             'controller' => ClientPutItemController::class,
             'validation_groups' => ['client_put_frontend'],
             'defaults' => ['_api_receive' => true]
@@ -257,6 +258,7 @@ class Client implements ClientInterface, UserInterface, PasswordAuthenticatedUse
     )]
     #[Groups([
         "client_write",
+        "client_put_item",
         "signup_collection",
     ])]
     private ?string $plainPassword = null;
